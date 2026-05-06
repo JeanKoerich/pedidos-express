@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: pedidos-express
+data:
+  FRONTEND_URL: "http://frontend-service:3000"
+  NEXT_PUBLIC_API_URL: "http://backend-service:3001"

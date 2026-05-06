@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: init-database
+  namespace: pedidos-express
+spec:
+  template:
+    spec:
+      containers:
+        - name: init-db
+          image: jeankoerich/pedidos-express-backend:1.0.0
+          command: ["npm", "run", "db:init"]
+          envFrom:
+            - secretRef:
+                name: db-secrets
+      restartPolicy: OnFailure
+  backoffLimit: 3
