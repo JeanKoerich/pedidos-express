@@ -1,5 +1,5 @@
 # Frontend Dockerfile - Multi-stage build
-FROM node:20-alpine AS base
+FROM node:22-alpine AS base
 
 # 1. Install dependencies
 FROM base AS deps
@@ -7,7 +7,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml* ./
-RUN corepack enable pnpm && pnpm install --frozen-lockfile
+RUN corepack enable && corepack prepare pnpm@9.15.4 --activate && pnpm install --frozen-lockfile
 
 # 2. Rebuild the source code
 FROM base AS builder
@@ -23,7 +23,7 @@ RUN touch next.user-config.mjs
 ENV NEXT_TELEMETRY_DISABLED=1
 
 # Build the application
-RUN corepack enable pnpm && pnpm build
+RUN corepack enable && corepack prepare pnpm@9.15.4 --activate && pnpm build
 
 # 3. Production image
 FROM base AS runner

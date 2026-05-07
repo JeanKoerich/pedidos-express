@@ -1,7 +1,4 @@
-version: '3.8'
-
 services:
-  # PostgreSQL Database
   postgres:
     image: postgres:16-alpine
     container_name: pedidos-db
@@ -14,14 +11,13 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d pedidos_express"]
       interval: 5s
       timeout: 5s
       retries: 5
     networks:
       - pedidos-network
 
-  # Backend API
   backend:
     build:
       context: ./backend
@@ -43,7 +39,6 @@ services:
     networks:
       - pedidos-network
 
-  # Frontend Next.js
   frontend:
     build:
       context: .
