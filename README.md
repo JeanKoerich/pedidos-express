@@ -1,6 +1,6 @@
 # Pedidos Express
 
-O **Pedidos Express** é uma aplicação desenvolvida para a disciplina de Computação em Nuvem, com o objetivo de aplicar na prática conceitos de containers, banco de dados, balanceamento de carga, Kubernetes e infraestrutura em nuvem utilizando AWS.
+O **Pedidos Express** é uma aplicação desenvolvida para a disciplina de Sistemas Distribuídos, com o objetivo de aplicar na prática conceitos de containers, banco de dados, balanceamento de carga, Kubernetes e infraestrutura em nuvem utilizando AWS.
 
 O projeto simula um sistema de pedidos para uma lanchonete, contendo uma interface para o cliente realizar pedidos e uma tela de cozinha para acompanhar os pedidos em tempo real.
 
