@@ -20,7 +20,7 @@ interface OrdersContextType {
 
 const OrdersContext = createContext<OrdersContextType | null>(null)
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
+const API_URL = process.env.NEXT_PUBLIC_API_URL || ''
 
 export function OrdersProvider({ children }: { children: ReactNode }) {
   const [orders, setOrders] = useState<Order[]>([])
